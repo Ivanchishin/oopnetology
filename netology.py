@@ -8,10 +8,10 @@ class Student:
         self.grades = {}
 
     def __str__(self):
-        return f'Имя: {self.name}\nФамилия: {self.surname}\n'\
-               f'Средняя оценка за домашние задания: {self.avgocenka()}\n' \
-               f'Курсы в процессе изучения: {", ".join(self.courses_in_progress)}\n' \
-               f'Завершенные курсы: {", ".join(self.finished_courses)}'
+        return (f'Имя: {self.name}\nФамилия: {self.surname}\n'
+                f'Средняя оценка за домашние задания: {self.avgocenka()}\n'
+                f'Курсы в процессе изучения: {", ".join(self.courses_in_progress)}\n'
+                f'Завершенные курсы: {", ".join(self.finished_courses)}')
 
     def avgocenka(self):
         sumocenk = 0
@@ -70,7 +70,8 @@ class Lecturer(Mentor):
         self.grades = {}
 
     def __str__(self):
-        return f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {self.avgocenka()}'
+        return (f'Имя: {self.name}\nФамилия: {self.surname}\n'
+                f'Средняя оценка за лекции: {self.avgocenka()}')
 
     def avgocenka(self):
         sumocenk = 0
@@ -111,7 +112,9 @@ class Reviewer(Mentor):
         return f'Имя: {self.name}\nФамилия: {self.surname}'
 
     def rate_hw(self, student, course, grade):
-        if isinstance(student, Student) and course in self.courses_attached and course in student.courses_in_progress:
+        if (isinstance(student, Student) and
+                course in self.courses_attached and
+                course in student.courses_in_progress):
             if course in student.grades:
                 student.grades[course] += [grade]
             else:
